@@ -3,17 +3,19 @@
   "builds": [
     {
       "src": "public/index.php",
-      "use": "@vercel/php@0.7.0",
-      "config": {
-        "maxDuration": 30
-      }
+      "use": "@vercel/php@0.7.0"
     }
   ],
   "routes": [
-    { "src": "/", "dest": "/public/index.php" },
-    { "src": "/api/(?<path>.*)", "dest": "/public/index.php" },
-    { "src": "/(.*)", "dest": "/public/$1" },
-    { "src": "/(.*)", "dest": "/public/index.php" }
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1",
+      "check": true
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/index.php"
+    }
   ],
   "env": {
     "APP_ENV": "production",
