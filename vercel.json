@@ -10,13 +10,15 @@
     }
   ],
   "routes": [
-    { "handle": "filesystem" },
-    { "src": "/.*", "dest": "/public/index.php" }
+    { "src": "/", "dest": "/public/index.php" },
+    { "src": "/api/(?<path>.*)", "dest": "/public/index.php" },
+    { "src": "/(.*)", "dest": "/public/$1" },
+    { "src": "/(.*)", "dest": "/public/index.php" }
   ],
   "env": {
     "APP_ENV": "production",
     "APP_DEBUG": "false",
-    "APP_URL": "incident-api.vercel.app",
+    "APP_URL": "https://incident-api.vercel.app",
     "APP_KEY": "base64:zs3TfT/j7kzcc27NpyWqJ/juGMMOjT7kdB23j2yL3uE="
   }
 }
